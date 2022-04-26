@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>毛玻璃效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.ssfiction.com%2Fwp-content%2Fuploads%2F2020%2F08%2F20200731_5f246e3385df9.jpg&refer=http%3A%2F%2Fwww.ssfiction.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651290720&t=d882713d26be7d94a5efb0003bec003f") center no-repeat;
+        }
+
+        .main {
+            width: 400px;
+            height: 220px;
+            margin: -4% 0 0 20%;
+            background-color: #ffffff40;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="main"></div>
+    </div>
+</body>
+</html>

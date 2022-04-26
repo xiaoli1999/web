@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左右垂直居中</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .wrap {
+        width: 100vw;
+        height: 100vh;
+        background: #f7f8fa;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /*TODO 已知宽高时*/
+
+    /*TODO absolute + margin: auto*/
+    /*.main {*/
+    /*    width: 200px;*/
+    /*    height: 200px;*/
+    /*    background: #eee;*/
+    /*    position: absolute;*/
+    /*    top: 0;*/
+    /*    left: 0;*/
+    /*    right: 0;*/
+    /*    bottom: 0;*/
+    /*    margin: auto;*/
+    /*}*/
+
+    /*TODO absolute + 负margin*/
+    /*.main {*/
+    /*    width: 200px;*/
+    /*    height: 200px;*/
+    /*    background: #eee;*/
+    /*    position: absolute;*/
+    /*    top: 50%;*/
+    /*    left: 50%;*/
+    /*    margin-top: -100px;*/
+    /*    margin-left: -100px;*/
+    /*}*/
+
+    /*TODO absolute + calc*/
+    /*.main {*/
+    /*    width: 200px;*/
+    /*    height: 200px;*/
+    /*    background: #eee;*/
+    /*    position: absolute;*/
+    /*    top: calc(50% - 100px);*/
+    /*    left: calc(50% - 100px);*/
+    /*}*/
+
+
+    /*TODO 未知宽高时*/
+
+    /*TODO absolute + transform*/
+    /*.main {*/
+    /*    background: #eee;*/
+    /*    position: absolute;*/
+    /*    top: 50%;*/
+    /*    left: 50%;*/
+    /*    transform: translate(-50%, -50%);*/
+    /*}*/
+
+    /*TODO 无视宽高时*/
+
+    /*TODO 父元素flex布局 父元素控制*/
+    /*.wrap {*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*}*/
+    /*.main {*/
+    /*    width: 200px;*/
+    /*    height: 200px;*/
+    /*    background: #eee;*/
+    /*}*/
+    /*.main {*/
+    /*    background: #eee;*/
+    /*}*/
+
+    /*TODO 父元素flex布局 子元素优雅控制*/
+    .wrap {
+        display: flex;
+    }
+    /*.main {*/
+    /*    width: 200px;*/
+    /*    height: 200px;*/
+    /*    background: #eee;*/
+    /*    margin: auto;*/
+    /*}*/
+    .main {
+        background: #eee;
+        margin: auto;
+    }
+
+    /*TODO 父元素grid布局 父元素控制*/
+    /*.wrap {*/
+    /*    display: grid;*/
+    /*    align-self: center;*/
+    /*    justify-self: center;*/
+    /*}*/
+    /*.main {*/
+    /*    width: 200px;*/
+    /*    height: 200px;*/
+    /*    background: #eee;*/
+    /*    margin: auto;*/
+    /*}*/
+    /*.main {*/
+    /*    background: #eee;*/
+    /*    margin: auto;*/
+    /*}*/
+
+
+
+</style>
+<body>
+    <div class="wrap">
+        <div class="main text-center">居<br>中</div>
+    </div>
+</body>
+</html>
