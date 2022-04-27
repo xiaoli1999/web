@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue3响应式原理</title>
+</head>
+<body>
+<div id="app"></div>
+</body>
+</html>
+
+<script>
+    function Vue() {
+        this.$data = {
+            title: '',
+            user: {
+                name: ''
+            }
+        }
+
+        this.$el = document.getElementById('app')
+        this._html = ''
+
+        this.observe(this.$data)
+        this.render()
+    }
+
+    // 处理响应式数据
+    Vue.prototype.observe = function () {
+        const that = this
+        this.$data = new Proxy(that.$data, {
+            get(target, key) {
+                return target[key]
+            },
+            set(target, key, newVal) {
+                target[key] = newVal
+                that.render()
+            }
+        })
+    }
+
+    // 渲染页面
+    Vue.prototype.render = function () {
+        this._html = `<div style="height: 100vh; text-align: center;text-align: center; line-height: 30vh;">
+                        我是vue2-${this.$data.title}
+                        <br />
+                        username: ${this.$data.user.name}
+                        <br />
+                        age: ${this.$data.age ?? 0}
+                        <br />
+                        info: ${this.$data.info?.sex ?? ''}
+                        <div style="height:30vh;background: #f4f4f4;text-align: center;line-height: 30vh;">点我</div>
+                      </div>`
+        this.$el.innerHTML = this._html
+    }
+
+
+    const vm = new Vue()
+    console.log(vm)
+
+    setTimeout(() => (vm.$data.title = '啦啦啦啦'), 2000)
+    vm.$el.onclick = () => {
+        vm.$data.title = Math.floor(Math.random() * 10000)
+        if (!vm.$data.user.name) vm.$data.user.name = '小黎'
+        vm.$data.age = Math.floor(Math.random() * 100)
+        vm.$data.info = {
+            sex: '男'
+        }
+    }
+
+</script>
