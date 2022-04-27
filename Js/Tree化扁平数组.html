@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tree化扁平数组</title>
+</head>
+<body>
+    <div>Tree化扁平数组</div>
+    <div></div>
+</body>
+<script>
+    const data = [
+        {id: 2, fatherId: 1},
+        {id: 3, fatherId: 2},
+        {id: 7, fatherId: 6},
+        {id: 15, fatherId: 13},
+        {id: 18, fatherId: null},
+        {id: 13, fatherId: 18},
+        {id: 8, fatherId: 6},
+        {id: 1, fatherId: null},
+        {id: 11, fatherId: 5},
+        {id: 12, fatherId: 11},
+        {id: 4, fatherId: 1},
+        {id: 5, fatherId: 3},
+        {id: 6, fatherId: 2},
+        {id: 9, fatherId: 4},
+        {id: 10, fatherId: 7}
+    ]
+
+    const divElementList =  document.getElementsByTagName('div')
+    divElementList[1].innerText = `原数组： ${ JSON.stringify(data) }`
+
+    const treeList = (list) => {
+        let result = []
+        const map = {}
+
+        // 元素顺序不对时需先排序
+        list.forEach(item => {
+            item.children = []
+            map[item.id] = item
+        })
+
+        for (const i of list) {
+            if (!i.fatherId) {
+                result.push(i)
+            } else {
+                if (map[i.fatherId]) {
+                    map[i.fatherId].children.push(i)
+                }
+            }
+
+        }
+        return result
+    }
+
+    const bodyElement = document.getElementsByTagName('body')[0]
+
+    const list = treeList(data)
+    console.log('原数组:', data)
+    console.log('整理后:', list)
+    list.map((item, i) => {
+        const son = document.createElement("div");
+        son.innerHTML = `<div>----------${ i===0 ? '整理后的数组' : '' }: ${ JSON.stringify(item) }</div>----------<br/>`
+        bodyElement.appendChild(son)
+        return i
+    })
+
+</script>
+</html>

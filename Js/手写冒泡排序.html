@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手写冒泡排序</title>
+</head>
+<body>
+<div></div>
+<div></div>
+</body>
+</html>
+
+<script>
+    const divElementList = document.getElementsByTagName('div')
+    const list = [18, 24, 0, 5, 6, 8, 10, 49, 23]
+    divElementList[0].innerText = `原数组： ${ list }`
+
+    const sortArr = (arr) => {
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr.length - 1; j++) {
+                if (arr[j] > arr[j + 1]) [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+            }
+        }
+        return arr
+    }
+
+    divElementList[1].innerText = `排序后： ${sortArr(list)}`
+
+</script>
