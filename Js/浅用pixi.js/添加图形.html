@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixi添加图形</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #app {
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .canvas {
+           display: inline-block;
+            margin: 40px auto;
+            box-shadow: 0 0 12px 2px #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div ref="canvas" class="canvas"></div>
+        <div>
+            <button @click="addShape('line')">添加线条</button>
+            <button @click="addShape('rect', 'border')">添加边框</button>
+            <button @click="addShape('rect', )">添加矩形</button>
+            <button @click="addShape('rect', 'rounded')">添加圆角矩形</button>
+            <button @click="addShape('star')">添加星形</button>
+            <button @click="addShape('circle')">添加圆形</button>
+            <button @click="addShape('ellipse')">添加椭圆</button>
+            <button @click="addShape('polygon')">添加多边形</button>
+            <button @click="addShape('bezier')">添加贝塞尔曲线</button>
+            <button @click="addShape('arc')">添加圆弧</button>
+            <button v-if="pixi" @click="clearShape" :disabled="!pixi.stage.children || !pixi.stage.children.length">清除所有形状</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    // todo pixi 绘制图形
+    // todo 线条 lineTo(x, y),  lineStyle(width（线条宽度）, color（线条颜色）, alpha（线条透明度）, alignment（线条对齐方式，默认0.5居中，0=内部，1=外部）)
+    // todo 矩形、边框、圆角矩形 drawRect(中心点x, 中心点y, width, height) drawRoundedRect(中心点x, 中心点y, width, height, rounded)
+    // todo 星形 drawStar(中心点x, 中心点y, points（星星点数必须大于1）, radius（星星外半径）, innerRadius（星星内半径，默认为外半径一半）, rotation（星星自转弧度， 默认0为垂直）)
+    // todo 圆形 drawCircle(x（圆心x轴坐标）, y（圆心y轴坐标）, radius（圆的半径）)
+    // todo 椭圆 drawEllipse(x（椭圆心x轴坐标）, y（椭圆心y轴坐标）, width（椭圆的半宽）, height（椭圆半高）)
+    // todo 多边形 drawPolygon(path)
+    // todo 贝塞尔曲线 bezierCurveTo(cpX（控制点x）, cpY（控制点y）, cpX2（第二控制点x）, cpY2（第二控制点y）, toX（目的点x）, toY（目的点y）)
+    // todo 圆弧,或完整的 arc(cx（圆心x）, cy（圆心y）, radius（圆半径）, startAngle（起始角度）, endAngle（终止角度）, anticlockwise（默认false为顺时针，true为顺时针）)
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            pixi: null
+        },
+        mounted () {
+            // 创建pixi实例
+            this.init()
+        },
+        methods: {
+            init () {
+                this.pixi = new PIXI.Application({
+                    width: 600,
+                    height: 600,
+                    antialias: true,
+                    backgroundColor: 0xffffff
+                })
+                this.$refs.canvas.append(this.pixi.view)
+                // this.$ref.canvas
+                // document.getElementById('app').append(app.view)
+            },
+            addShape (type, extend) {
+                const graphics = new PIXI.Graphics()
+
+                if (type === 'line') {
+                    graphics.lineStyle(2, 0x4bcc2a, 1)
+                    graphics.lineTo(50, 125)
+                } else if (type === 'rect') {
+                    if (extend === 'border') {
+                        graphics.lineStyle(2, 0x152c2a, 1)
+                        graphics.drawRect(0, 0, 50, 50)
+                    } else if (extend === 'rounded') {
+                        graphics.beginFill(0x4fac2a)
+                        graphics.drawRoundedRect(0, 0, 80, 30, 8)
+                        graphics.endFill()
+                    } else {
+                        graphics.beginFill(0x6cac2a)
+                        graphics.drawRect(0, 0, 80, 34)
+                        graphics.endFill()
+                    }
+                } else if (type === 'star') {
+                    graphics.beginFill(0x4bcc2a)
+                    graphics.drawStar(0, 0, 6, 36)
+                    graphics.endFill()
+
+                } else if (type === 'circle') {
+                    graphics.beginFill(0x152c2a)
+                    graphics.drawCircle(0, 0, 48)
+                    graphics.endFill()
+
+                } else if (type === 'ellipse') {
+                    graphics.beginFill(0x1f2caa)
+                    graphics.drawEllipse(0, 0, 80, 50)
+                    graphics.endFill()
+                } else if (type === 'polygon') {
+                    graphics.lineStyle(2, 0x4bacd)
+                    graphics.drawPolygon([40, 40, 120, 120, 40, 120, 80, 40])
+                } else if (type === 'bezier') {
+                    graphics.lineStyle(2, 0x4bacd)
+                    graphics.bezierCurveTo(80, 240, 6, 4, 280, 30)
+                } else if (type === 'arc') {
+                    graphics.lineStyle(2, 0x4bacd)
+                    graphics.arc(0, 0, 80, 90, 20)
+                } else {
+
+                }
+
+                const x = Math.trunc(Math.random() * 600)
+                const y = Math.trunc(Math.random() * 600)
+                graphics.x = x <= 60 ? 60 : (x >= 540 ? 540 : x)
+                graphics.y = y <= 60 ? 60 : (y >= 540 ? 540 : y)
+
+                graphics.shapeIndex = this.pixi.stage.children.length || 0
+                this.pixi.stage.addChild(graphics)
+
+                graphics.interactive = true
+                graphics.buttonMode = true;
+
+                graphics.on('click', () => this.pixi.stage.children.splice(graphics.shapeIndex, 1))
+            },
+            clearShape () {
+                this.pixi.stage.children = []
+            }
+        }
+    })
+</script>

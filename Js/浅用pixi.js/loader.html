@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixi加载器loader</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #app {
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .canvas {
+           display: inline-block;
+            margin: 40px auto;
+            box-shadow: 0 0 12px 2px #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div ref="canvas" class="canvas"></div>
+        <div>
+            <button @click="addImg">添加预制图片</button>
+            <button v-if="pixi" @click="clearImg" :disabled="!pixi.stage.children || !pixi.stage.children.length">清除所有图片</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    // todo pixi 绘制文本
+    // todo Text(message, options)
+    // todo
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            pixi: null
+        },
+        mounted () {
+            // 创建pixi实例
+            this.init()
+        },
+        methods: {
+            init () {
+                this.pixi = new PIXI.Application({
+                    width: 600,
+                    height: 600,
+                    antialias: true,
+                    backgroundColor: 0xffffff
+                })
+                this.$refs.canvas.append(this.pixi.view)
+                // this.$ref.canvas
+                // document.getElementById('app').append(app.view)
+            },
+            addImg () {
+                const loader = new PIXI.Loader()
+                loader.add('rise', '/img/rise.jpg').add('quite', '/img/quite.jpg')
+                loader.load((loader, resources) => {
+                    const ris
+                    console.log(loader)
+                    console.log(resources)
+                })
+
+
+                // text.on('click', () => {
+                //     const content = prompt('请输入更改的内容')
+                //     if (content) {
+                //         this.pixi.stage.children[text.shapeIndex].text = content
+                //     } else {
+                //         this.pixi.stage.children.splice(text.shapeIndex, 1)
+                //     }
+                // })
+            },
+            clearImg () {
+                this.pixi.stage.children = []
+            }
+        }
+    })
+</script>
