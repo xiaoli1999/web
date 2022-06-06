@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg文字效果</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header>
+        <div class="wave">SVG文字效果</div>
+    </header>
+    <!--文字线性渐变-->
+    <div class="text">
+        <div class="text-title">空心文字效果</div>
+        <svg width="1200" height="300">
+            <text class="text-main empty1" x="20" y="60">The gentleness of life will run into your arms.</text>
+            <text class="text-main empty2" x="20" y="120">The gentleness of life will run into your arms.</text>
+            <text class="text-main empty3" x="20" y="180">The gentleness of life will run into your arms.</text>
+            <text class="text-main empty4" x="20" y="240">The gentleness of life will run into your arms.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">错落文字效果</div>
+        <svg width="1200" height="120">
+            <text class="text-main stagger" x="200" y="80 100 80 60 80 80 100 80 60 80 80 80 80 80 80">Take Your Time.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">文字间距效果</div>
+        <svg width="1200" height="220">
+            <text class="text-main space" x="60" y="60" dx="6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6">Take Your Time.</text>
+            <text class="text-main space" x="60" y="120" dx="6 8 10 12 14 16 18 20 24 26 28 30 32 34 36 38 40">Take Your Time.</text>
+            <text class="text-main space" x="60" y="180" dx="6 10 18 6 10 18 6 10 18 6 10 18 6 10 18 6 10 18">Take Your Time.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">突出部分文字效果</div>
+        <svg width="1200" height="60">
+            <text class="text-main some" x="380" y="50"> Take Y<tspan font-size="48" font-weight="900">ou</tspan>r Time.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">线性渐变文字效果</div>
+        <svg width="1200" height="300">
+            <defs>
+                <linearGradient id="linear" x1="4%" y1="10%" x2="100%" y2="80%">
+                    <stop offset="0%" stop-color="#FF0000"></stop>
+                    <stop offset="50%" stop-color="#00FF00"></stop>
+                    <stop offset="100%" stop-color="#0000FF"></stop>
+                </linearGradient>
+            </defs>
+            <text class="text-main linear1" x="20" y="60" stroke="url(#linear)">The gentleness of life will run into your arms.</text>
+            <text class="text-main linear2" x="20" y="120" stroke="url(#linear)">The gentleness of life will run into your arms.</text>
+            <text class="text-main linear3" x="20" y="180" stroke="url(#linear)">The gentleness of life will run into your arms.</text>
+            <text class="text-main linear4" x="20" y="240" stroke="url(#linear)">The gentleness of life will run into your arms.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">放射性渐变文字效果</div>
+        <svg width="1200" height="300">
+            <defs>
+                <radialGradient id="radial" cx="50%" cy="50%" r="40%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#FF0000"></stop>
+                    <stop offset="50%" stop-color="#00FF00"></stop>
+                    <stop offset="100%" stop-color="#0000FF"></stop>
+                </radialGradient>
+            </defs>
+            <text class="text-main linear1" x="20" y="60" stroke="url(#radial)">The gentleness of life will run into your arms.</text>
+            <text class="text-main linear1" x="20" y="120" stroke="url(#radial)">The gentleness of life will run into your arms.</text>
+            <text class="text-main linear1" x="20" y="180" stroke="url(#radial)">The gentleness of life will run into your arms.</text>
+            <text class="text-main linear1" x="20" y="240" stroke="url(#radial)">The gentleness of life will run into your arms.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">文字瘦身、增肥效果</div>
+        <svg width="1200" height="160">
+            <defs>
+                <!--利用实现滤镜瘦身增肥-->
+                <filter id="slim">
+                    <feMorphology operator="erode" in="SourceGraphic" radius="1" />
+                </filter>
+                <filter id="strong">
+                    <feMorphology operator="dilate" in="SourceGraphic" radius="2" />
+                </filter>
+            </defs>
+            <text class="text-main slim-strong" x="20" y="60" filter="url(#slim)">The gentleness of life will run into your arms.</text>
+            <text class="text-main slim-strong" x="20" y="120" filter="url(#strong)">The gentleness of life will run into your arms.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">文字压扁效果</div>
+        <svg width="100%" height="100%">
+            <text class="text-main flatten" x="380" y="60">慢慢又漫漫</text>
+            <text class="text-main flatten" x="280" y="120" textLength="600" lengthAdjust="spacingAndGlyphs">慢慢又漫漫</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">单个文字旋转效果</div>
+        <svg width="1200" height="80">
+            <text class="text-main single-route" x="380" y="60" rotate="-20 10 30 20 40 6 24 0 8 -8 -14">take your time!</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">文字模糊效果</div>
+        <svg width="1200" height="80">
+            <defs>
+                <filter id="dim">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+                </filter>
+            </defs>
+            <text class="text-main dim" x="20" y="60" filter="url(#dim)">The gentleness of life will run into your arms.</text>
+        </svg>
+    </div>
+    <div class="text">
+        <div class="text-title">圆弧文字效果</div>
+        <svg width="1200" height="400">
+
+            <defs>
+                <path id="arc1" d="M100,100 A200,200 0 0 0 500,100" stroke="blue" stroke-width="5" fill="none" />
+                <path id="arc2" d="M700,300 A150,120 0 0 1 1000,300" stroke="blue" stroke-width="5" fill="none" />
+            </defs>
+            <text class="text-main arc" x="0" y="0">
+                <textPath xlink:href="#arc1">the gentleness of life will run into your arms</textPath>
+                <textPath xlink:href="#arc2">the gentleness of life will run into your arms</textPath>
+            </text>
+        </svg>
+    </div>
+
+    <div class="text">
+        <div class="text-title">文字曲线效果</div>
+        <svg width="1200" height="400">
+            <defs>
+                <path id="paths" d="M200,200 C200,200 400,500 600,200 800,-100 1000,200 1000,200" stroke="blue" stroke-width="5" fill="none"/><!--                <path id="paths" d="M130,140 C130,240 330,240 330,140 S510,60 510,140" stroke="blue" stroke-width="5" fill="none"/>-->
+                <linearGradient id="linear-path" x1="4%" y1="100%" x2="40%" y2="100%">
+                    <stop offset="10%" stop-color="#FF0000"></stop>
+                    <stop offset="80%" stop-color="#00FF00"></stop>
+                    <stop offset="100%" stop-color="#0000FF"></stop>
+                </linearGradient>
+            </defs>
+            <text class="text-main path" x="0" y="0">
+                <textPath xlink:href="#paths" stroke="url(#linear-path)">the gentleness of life will run into your arms</textPath>
+            </text>
+        </svg>
+    </div>
+</body>
+</html>
