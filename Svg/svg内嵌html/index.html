@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg内嵌html</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header>
+        <div class="wave">SVG内嵌html</div>
+    </header>
+    <!--文字线性渐变-->
+    <div class="text" >
+        <div class="text-title">css文字与底色反色效果</div>
+        <div class="text-main back-text">
+            <div>The gentleness of life will run into your arms.</div>
+        </div>
+    </div>
+    <!--文字线性渐变-->
+    <div class="text" >
+        <div class="text-title">svg嵌套css实现反色</div>
+        <svg id="svg" width="1200" height="300" xmlns="http://www.w3.org/2000/svg">
+            <foreignObject x="0" y="0" width="1200" height="300">
+                <div style="width: 1200px;height: 300px;font-size: 64px;background: linear-gradient(-60deg, #fff 0, #fff 50%, #000 50%, #000 100%);mix-blend-mode: difference;position: relative;">
+                    <div style="position: absolute;width: 100%;height: 100%;inset: 0;color: #fff;mix-blend-mode: difference;">The gentleness of life will run into your arms.</div>
+                </div>
+            </foreignObject>
+        </svg>
+    </div>
+    <button id="btn">svg转图片</button>
+    <img src="" alt="" style="margin: 0 auto;display: block" />
+</body>
+
+<script>
+
+    const btn = document.getElementById('btn');
+    btn.onclick = () => {
+        const svg = document.getElementById('svg');
+        const s = new XMLSerializer().serializeToString(svg);
+        const src = `data:image/svg+xml;base64,${
+            window.btoa(s)}`;
+        // ↓ 创建图片容器并存放
+        const img = new Image(); // 创建图片容器承载过渡
+        img.src = src;
+        // 注意：需要在图片onload方法中执行
+        img.onload = () => {
+            // ↓ 第二部分
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const context = canvas.getContext('2d');
+            context.drawImage(img, 0, 0);
+            document.getElementsByTagName('img')[0].src = canvas.toDataURL('image/png')
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  margin: 0 auto;
+}
+body {
+  width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #fff;
+  padding-bottom: 10vh;
+}
+header {
+  height: 200px;
+  line-height: 200px;
+  font-size: 108px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 2px;
+}
+header .wave {
+  /*设置元素背景图像*/
+  background: url("img/wave2.gif") repeat-x;
+  background-size: 200px 260px;
+  background-position: 0 40px;
+  -webkit-background-clip: text;
+  /*背景被裁剪到文字*/
+  -webkit-text-fill-color: transparent;
+  /*设置文字的填充颜色*/
+  -webkit-text-stroke: 1px #00000040;
+  /*文字描边*/
+  -webkit-animation: loading-animation 4200ms infinite linear alternate, wave-animation 4800ms infinite alternate;
+  /*设置动画*/
+}
+@-webkit-keyframes wave-animation {
+  /*创建动画*/
+  0% {
+    background-position: 0 40px;
+  }
+  100% {
+    background-position: 40% -100px;
+  }
+}
+@-webkit-keyframes loading-animation {
+  /*创建动画*/
+  0% {
+    background-position: 40% -100px;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
+.text .text-title {
+  height: 48px;
+  line-height: 48px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #363636;
+  text-align: center;
+  margin: 36px 0;
+}
+.text .text-main {
+  margin: 10px 0;
+  height: 180px;
+  line-height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 46px;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.24s linear;
+  font-family: Arial;
+}
+.text .text-main.back-text {
+  height: 280px;
+  line-height: 280px;
+  font-size: 64px;
+  background: linear-gradient(-60deg, #fff 0, #fff 50%, #000 50%, #000 100%);
+  mix-blend-mode: difference;
+  position: relative;
+}
+.text .text-main.back-text > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+/*# sourceMappingURL=index.css.map */
