@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<main style="height: 100vh;overflow: hidden">
+    <div id="main" style="display: flex;flex-wrap: nowrap;">
+        <div style="width: 100vw;height:100vh; background: #00000060;flex-shrink: 0">
+            1
+        </div>
+        <div style="width: 100vw;height:100vh; background: #363636;flex-shrink: 0">2</div>
+    </div>
+</main>
+<div id="text" style="width: 300px; position: fixed; top: 140px; left: 100px;z-index: 10;font-size: 24px; font-family: fantasy;">
+    <div class="texts">你好啊</div>
+    <div class="texts">好的呢</div>
+    <div class="texts">好的呢</div>
+</div>
+<script>
+    const main = document.getElementById('main')
+    const text = document.getElementById('text')
+    const texts = document.getElementsByClassName('texts')
+
+    let timer = null
+    let translateX = 0
+    let oldTranslateX = 0
+    let isEffect = true
+
+    windowAddMouseWheel();
+    function windowAddMouseWheel() {
+        const scrollFunc = function (e) {
+            e = e || window.event;
+            if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+                translateX += Math.ceil(e.wheelDelta / 2.8)
+                if (translateX <= -main.offsetWidth) translateX = -main.offsetWidth
+                if (translateX >= 0) translateX = 0
+                start()
+            } else if (e.detail) {  //Firefox滑轮事件
+                if (e.detail > 0) { //当滑轮向上滚动时
+                }
+                if (e.detail < 0) { //当滑轮向下滚动时
+                }
+            }
+        };
+        //给页面绑定滑轮滚动事件
+        if (document.addEventListener) { //火狐使用DOMMouseScroll绑定
+            document.addEventListener('DOMMouseScroll', scrollFunc, false);
+        }
+        //其他浏览器直接绑定滚动事件
+        window.onmousewheel = document.onmousewheel = scrollFunc;
+    }
+
+    function start () {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+            if (Math.abs(oldTranslateX - translateX) >= 300) {
+                translateX = oldTranslateX > translateX ? -main.offsetWidth : 0
+                main.style.transform = `translateX(${translateX}px)`
+                main.style.transition = 'all .4s'
+            } else {
+                main.style.transform = `translateX(${translateX}px)`
+                main.style.transition = 'all .2s'
+            }
+            oldTranslateX = translateX
+
+
+
+            console.log(translateX)
+            // 处理文字
+            if (Math.abs(translateX) >= 300 && isEffect) {
+                // text.style.top = '80px'
+                // text.style.opacity = '0'
+                // text.style.transition = 'all .4s'
+                for (let i = 0; i < texts.length; i++) {
+                    setTimeout(() => {
+                        texts[i].style.transform = 'translateY(-40px)'
+                        texts[i].style.opacity = '0'
+                        texts[i].style.transition = 'transform 0.8s, opacity 1.2s'
+                    }, i * 20)
+                }
+                isEffect = false
+            } else if (Math.abs(translateX) < 300 && !isEffect) {
+                console.log(123456)
+                // text.style.top = '140px'
+                // text.style.opacity = '1'
+                // text.style.transition = 'all .4s'
+                for (let i = 0; i < texts.length; i++) {
+                    setTimeout(() => {
+                        texts[i].style.transform = 'translateY(0)'
+                        texts[i].style.opacity = '1'
+                        texts[i].style.transition = 'transform 0.8s, opacity 1.2s'
+                    }, i * 20)
+                }
+                isEffect = true
+            }
+        }, 100)
+
+    }
+
+</script>
+
+</body>
+</html>
