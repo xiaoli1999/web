@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate.min.css"/>
+    <style>
+        main {
+            overflow: hidden;
+        }
+        main div {
+            margin: 30px 0;
+        }
+        .box {
+            width: 30%;
+            margin: 30px;
+            background: #457388;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #666;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #eee;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #222;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #ddd;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #232323;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #fadade;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #696969;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #adeced;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #f4f4f4;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #abccde;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #787989;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #aacacc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #cccccc;"></div>
+    <div class="box wow animate__fadeInUpBig" data-wow-duration='1.5s' style="width: 30%;height: 20vh; background: #dddddd;"></div>
+</main>
+
+</body>
+<script src="wow.js"></script>
+</html>
+<script>
+    const wow = new WOW(
+        {
+            boxClass:     'wow',      // animated element css class (default is wow)
+            animateClass: 'animated', // animation css class (default is animated)
+            offset:       0,          // distance to the element when triggering the animation (default is 0)
+            mobile:       true,       // trigger animations on mobile devices (default is true)
+            live:         true,       // act on asynchronously loaded content (default is true)
+            // scrollContainer: null // optional scroll container selector, otherwise use window
+        }
+    );
+    wow.init();
+</script>
