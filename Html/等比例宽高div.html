@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>等比例宽高div</title>
+</head>
+<style>
+    .content1 {
+        width: 150px;
+        height: 150px;
+        border: 1px solid;
+    }
+
+    .content2 {
+        position: relative;
+        width: 20%;
+        padding-top: 20%;
+        border: 1px solid;
+    }
+
+    .content2 > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+    }
+
+    .content3 {
+        display: inline-block;
+        aspect-ratio: 1;
+        border: 1px solid;
+    }
+
+</style>
+<body>
+    <h2>已知宽高</h2>
+    <div class="content1">已知宽高</div>
+    <h2>已知宽（自适应）</h2>
+    <div class="content2">
+        <div>
+            已知宽（自适应）
+        </div>
+    </div>
+    <h2>未知宽</h2>
+    <div class="content3">自定义内容未知宽高</div>
+</body>
+</html>
