@@ -6,62 +6,157 @@
 </head>
 <style>
     main {
-        width: 400px;
-        height: 400px;
-        background: pink;
         display: grid;
-        grid-template-columns: repeat(8, 50px);
-        grid-template-rows: repeat(8, 50px);
-        grid-auto-flow: dense;
-        border: 1px solid #999;
+        gap: 1%;
+        padding: 2%;
+        height: auto;
+        grid-template-rows: repeat(18, 4vw);
+        grid-template-columns: repeat(18, 4vw);
+        /*grid-auto-flow: dense;*/
+        border: 1px dashed #363636;
+        transition: all .2s;
+        margin-top: 10px;
     }
 
-    main > div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /*width: 50px;*/
-        /*height: 50px;*/
-        border: 1px dashed #000;
-        aspect-ratio: 1;
-    }
-
-    main > div:nth-child(2),
-    main > div:nth-child(4),
-    main > div:nth-child(7),
-    main > div:nth-child(12),
-    main > div:nth-child(18),
-    main > div:nth-child(20),
-    main > div:nth-child(24),
-    main > div:nth-child(27),
-    main > div:nth-child(31),
-    main > div:nth-child(36) {
-        grid-column: span 2 !important;
-        grid-row: span 2 !important;
+    main img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .3s;
+        opacity: .75;
     }
 </style>
 <body>
-    <main></main>
+    <button>点击转换为瀑布流</button>
+    <input type="checkbox" value="a" name="a" checked="checked" disabled> 固定宽高
+
+    <main>
+        <img src="https://t7.baidu.com/it/u=1732966997,2981886582&fm=193&f=GIF" alt="">
+
+        <img src="https://img2.baidu.com/it/u=835321525,1974857462&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=4185356800,2802284049&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=3210040695,226909247&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=1481763692,716830780&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img1.baidu.com/it/u=463439701,1254524263&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800" alt="">
+
+        <img src="https://img2.baidu.com/it/u=2856451327,1669023693&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=2120787041,3142646675&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=1107449069,1534677434&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=686428874,3063636929&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=622020107,4198730873&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=1381481047,1529970259&fm=253&fmt=auto&app=138&f=JPEG?w=752&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=1043589810,3146172690&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=3678797457,3915318316&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313" alt="">
+
+        <img src="https://img0.baidu.com/it/u=3741814049,1596806643&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=2444270163,1735057970&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=2354807234,2330649415&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=2354807234,2330649415&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+
+        <img src="https://img1.baidu.com/it/u=2127296471,1718783266&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=334" alt="">
+
+        <img src="https://img1.baidu.com/it/u=2656997690,163773951&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=355673106,1614830790&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+
+        <img src="https://img0.baidu.com/it/u=237869715,1943349713&fm=253&fmt=auto&app=138&f=JPEG?w=625&h=500" alt="">
+
+        <img src="https://img1.baidu.com/it/u=2995627973,3701011954&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img1.baidu.com/it/u=2995627973,3701011954&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img1.baidu.com/it/u=2995627973,3701011954&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img1.baidu.com/it/u=1197745376,2392125606&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281" alt="">
+
+        <img src="https://img0.baidu.com/it/u=3573266605,354600846&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800" alt="">
+
+        <img src="https://img2.baidu.com/it/u=3174457555,1916446872&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800" alt="">
+
+        <img src="https://img0.baidu.com/it/u=2768728813,984770529&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=312" alt="">
+
+        <img src="https://img0.baidu.com/it/u=2768728813,984770529&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=312" alt="">
+
+        <img src="https://img2.baidu.com/it/u=2200559954,2791780645&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=599265032,2084667636&fm=253&fmt=auto&app=138&f=JPG?w=500&h=889" alt="">
+
+        <img src="https://img0.baidu.com/it/u=370042409,1788170468&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800" alt="">
+
+        <img src="https://img2.baidu.com/it/u=1127559152,2513520410&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+        <img src="https://img2.baidu.com/it/u=1337397203,3461043982&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800" alt="">
+
+        <img src="https://img2.baidu.com/it/u=208983466,1828075326&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    </main>
 
 </body>
 
 <script>
-    const getRandomColor = () => {
-        return '#' + (function (color) {
-            return (color += '0123456789ABCDEF'[Math.floor(Math.random() * 16)]) && (color.length === 6) ? color : arguments.callee(color)
-        })('');
-    }
+    // 图片必须为正方形 cover
+
+    // 可只设置宽或高，未设置则根据图片自适应
 
     // 不能指定元素或图片宽高
     const main = document.getElementsByTagName('main')[0]
-    console.log(main)
-    for (let i = 0; i < 40; i++) {
-        const div = document.createElement('div')
-        div.innerText = i + 1 + ''
-        div.style.background = getRandomColor()
-        main.appendChild(div)
+    const btn = document.getElementsByTagName('button')[0]
+    const inp = document.getElementsByTagName('input')[0]
+
+    const imgList = document.getElementsByTagName('img')
+
+    for (const item of imgList) {
+        let num = Math.ceil(Math.random() * 10)
+        num = num > 4 ? num = 1 : num
+        item.style.gridColumn = `span ${num}`
+        item.style.gridRow = `span ${num}`
+        // item.style.aspectRatio = '1'
     }
-    setTimeout(() => (main.style.gridAutoFlow = 'dense'), 3000)
+
+    btn.onclick = () => {
+        for (const item of imgList) {
+            item.style.opacity = `1`
+            item.style.borderRadius = `10px`
+        }
+        main.style.gridAutoFlow = 'dense'
+        inp.disabled = false
+    }
+
+    inp.addEventListener("change", function (e) {
+        console.log(e, e.srcElement.checked)
+        for (const item of imgList) {
+           item.style.gridRow = e.srcElement.checked ? item.style.gridColumn : 'auto'
+        }
+    })
+
+
+    // const getRandomColor = () => {
+    //     return '#' + (function (color) {
+    //         return (color += '0123456789ABCDEF'[Math.floor(Math.random() * 16)]) && (color.length === 6) ? color : arguments.callee(color)
+    //     })('');
+    // }
+
+    // console.log(main)
+    // for (let i = 0; i < 40; i++) {
+    //     const div = document.createElement('div')
+    //     div.innerText = i + 1 + ''
+    //     div.style.background = getRandomColor()
+    //     main.appendChild(div)
+    // }
 
 
 </script>
