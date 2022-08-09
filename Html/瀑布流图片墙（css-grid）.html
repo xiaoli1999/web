@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流图片墙（css-grid）</title>
+</head>
+<style>
+    main {
+        width: 400px;
+        height: 400px;
+        background: pink;
+        display: grid;
+        grid-template-columns: repeat(8, 50px);
+        grid-template-rows: repeat(8, 50px);
+        grid-auto-flow: dense;
+        border: 1px solid #999;
+    }
+
+    main > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*width: 50px;*/
+        /*height: 50px;*/
+        border: 1px dashed #000;
+        aspect-ratio: 1;
+    }
+
+    main > div:nth-child(2),
+    main > div:nth-child(4),
+    main > div:nth-child(7),
+    main > div:nth-child(12),
+    main > div:nth-child(18),
+    main > div:nth-child(20),
+    main > div:nth-child(24),
+    main > div:nth-child(27),
+    main > div:nth-child(31),
+    main > div:nth-child(36) {
+        grid-column: span 2 !important;
+        grid-row: span 2 !important;
+    }
+</style>
+<body>
+    <main></main>
+
+</body>
+
+<script>
+    const getRandomColor = () => {
+        return '#' + (function (color) {
+            return (color += '0123456789ABCDEF'[Math.floor(Math.random() * 16)]) && (color.length === 6) ? color : arguments.callee(color)
+        })('');
+    }
+
+    // 不能指定元素或图片宽高
+    const main = document.getElementsByTagName('main')[0]
+    console.log(main)
+    for (let i = 0; i < 40; i++) {
+        const div = document.createElement('div')
+        div.innerText = i + 1 + ''
+        div.style.background = getRandomColor()
+        main.appendChild(div)
+    }
+    setTimeout(() => (main.style.gridAutoFlow = 'dense'), 3000)
+
+
+</script>
+</html>
