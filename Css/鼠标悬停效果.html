@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标平悬停效果</title>
+    <style>
+        div {
+            font-size: 34px;
+            font-weight: 700;
+            display: inline-block;
+            border: 1px solid #323232;
+            padding: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .bg::after {
+            content: '';
+            position: absolute;
+            transform: scaleX(0);
+            inset: 0;
+            z-index: -1;
+            background: #E6E6FA;
+            transition: transform .5s ease-in-out;
+        }
+
+        .bg:hover::after {
+            transform: scaleX(1);
+        }
+
+        .bg1::after {
+            transform-origin: left;
+        }
+        .bg1:hover::after {
+            transform-origin: left;
+        }
+
+        .bg2::after {
+            transform-origin: left;
+        }
+        .bg2:hover::after {
+            transform-origin: right;
+        }
+
+        .bg3::after {
+            transform-origin: right;
+        }
+        .bg3:hover::after {
+            transform-origin: left;
+        }
+
+        .bg4::after {
+            transform-origin: right;
+        }
+        .bg4:hover::after {
+            transform-origin: right;
+        }
+
+        .rainbow1 {
+            background: linear-gradient(to right, #fff1eb, #ace0f9) no-repeat 0 100%;
+            background-size: 0 3px;
+            transition: all .4s;
+            border: 0;
+        }
+
+        .rainbow2 {
+            background: linear-gradient(to right, #fddb92, #d1fdff, #fddb92) no-repeat 50% 100%;
+            background-size: 0 3px;
+            transition: all .4s;
+            border: 0;
+        }
+
+        .rainbow3 {
+            background: linear-gradient(to right, #fad0c4, #fad0c4) no-repeat 100% 100%;
+            background-size: 0 3px;
+            transition: all .4s;
+            border: 0;
+        }
+
+        .rainbow:hover {
+            background-size: 100% 3px;
+        }
+
+        .text-bg1 {
+            border: 1px dashed #363636;
+            background: linear-gradient(90deg, #ace0f9 50%, #000 0) no-repeat;
+            background-size: 200% 100%;
+            background-position-x: 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all .4s;
+        }
+        .text-bg1:hover {
+            background-position-x: 0;
+        }
+
+        .text-bg2 {
+            border: 1px dashed #363636;
+            background: linear-gradient(90deg, #000 0, #000 50%, #fddb92 50%, #fddb92 100%) no-repeat;
+            background-size: 200% 100%;
+            background-position-x: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all .4s;
+        }
+        .text-bg2:hover {
+            background-position-x: 100%;
+        }
+
+        .text-bg3 {
+            border: 1px dashed #363636;
+            background: linear-gradient(90deg, #000 0, #000 50%, #fddb92 50%, #d1fdff 100%) no-repeat;
+            background-size: 200% 100%;
+            background-position-x: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all .4s;
+        }
+        .text-bg3:hover {
+            background-position-x: 100%;
+        }
+
+        .border1 {
+            box-sizing: border-box;
+            border: 0;
+            margin-right: 10px;
+            background:
+                    linear-gradient(#c471f5 0 0) 100% 0,
+                    linear-gradient(#c471f5 0 0) 0 0,
+                    linear-gradient(#c471f5 0 0) 0 100%,
+                    linear-gradient(#c471f5 0 0) 100% 100%;
+            background-size: 0 2px, 2px 0;
+            background-repeat: no-repeat;
+            transition: 0.5s;
+        }
+        .border1:hover {
+            background-size: 100% 3px, 3px 100%;
+        }
+
+        .border2 {
+            box-sizing: border-box;
+            border: 0;
+            margin-right: 10px;
+            background:
+                    linear-gradient(#c471f5 0 0) 0 0,
+                    linear-gradient(#c471f5 0 0) 0 0,
+                    linear-gradient(#c471f5 0 0) 100% 100%,
+                    linear-gradient(#c471f5 0 0) 100% 100%;
+            background-size: 0 2px, 2px 0;
+            background-repeat: no-repeat;
+            transition: 0.5s;
+        }
+        .border2:hover {
+            background-size: 100% 3px, 3px 100%;
+        }
+
+        .border3 {
+            box-sizing: border-box;
+            border: 0;
+            margin-right: 10px;
+            background:
+                    linear-gradient(#9795f0 0 0) 0 100%,
+                    linear-gradient(#fbc8d4 0 0) 0 100%,
+                    linear-gradient(#ace0f9 0 0) 100% 0,
+                    linear-gradient(#cd9cf2 0 0) 100% 0%;
+            background-size: 16px 2px, 2px 16px;
+            background-repeat: no-repeat;
+            transition: 0.5s;
+        }
+        .border3:hover {
+            background-position: 100% 100%, 0 0, 0 0, 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <h3>悬停背景</h3>
+    <hr>
+    <div class="bg bg1">Hover background</div>
+    <div class="bg bg2">Hover background</div>
+    <div class="bg bg3">Hover background</div>
+    <div class="bg bg4">Hover background</div>
+    <h3>悬停彩虹线条</h3>
+    <hr>
+    <div class="rainbow rainbow1">Rainbow line</div>
+    <div class="rainbow rainbow2">Rainbow line</div>
+    <div class="rainbow rainbow3">Rainbow line</div>
+
+    <h3>悬停文字背景</h3>
+    <hr>
+    <div class="text-bg text-bg1">Text background</div>
+    <div class="text-bg text-bg2">Text background</div>
+    <div class="text-bg text-bg3">Text background</div>
+
+    <h3>悬停边框</h3>
+    <hr>
+    <div class="border border1">Border hover</div>
+    <div class="border border2">Border hover</div>
+    <div class="border border3">Border hover</div>
+</body>
+</html>
