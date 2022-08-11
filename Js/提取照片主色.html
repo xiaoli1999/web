@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提取照片主色</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+</head>
+<body>
+    <img src="https://img0.baidu.com/it/u=355673106,1614830790&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+<!--    <canvas id="canvas" width="500" height="500"></canvas>-->
+    <div style="width: 400px;height: 400px;border: 1px dashed #ccc"></div>
+</body>
+</html>
+
+<script>
+    // todo 效果不佳，暂定
+    const colorThief = new ColorThief();
+
+    let img = new Image()
+
+    img.onload = function() {
+        const rgba = colorThief.getColor(img, 10)
+        console.log(rgba)
+        document.getElementsByTagName('div')[0].style.background = `rgba(${rgba.join(', ')})`
+    }
+
+    img.src="https://img0.baidu.com/it/u=355673106,1614830790&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"
+    img.crossOrigin="Anonymous"
+</script>
+
+<!--<script>-->
+<!--    return-->
+<!--    let img = new Image()-->
+<!--    let canvas = document.getElementById('canvas')-->
+<!--    let ctx = canvas.getContext('2d')-->
+
+<!--    img.onload = function() {-->
+<!--        console.time('a')-->
+<!--        ctx.drawImage(img, 0, 0)-->
+<!--        img.style.display = 'none'-->
+<!--        let imgData = (ctx.getImageData(0, 0, img.width, img.height)).data-->
+<!--        const data = Array.from(imgData)-->
+<!--        console.log(data)-->
+<!--        // console.log(data)-->
+<!--        // const colorObj = {}-->
+<!--        // for (let i = 0; i < data.length; i+=4) {-->
+<!--        //     const item = colorObj[`rgba(${data[i]}, ${data[i+1]}, ${data[i+2]}, ${data[i+3]})`]-->
+<!--        //     if (item) {-->
+<!--        //         item.num += 1-->
+<!--        //     } else {-->
+<!--        //         colorObj[`rgba(${data[i]}, ${data[i+1]}, ${data[i+2]}, ${data[i+3]})`] = { rgba: `rgba(${data[i]}, ${data[i+1]}, ${data[i+2]}, ${data[i+3]})`, num: 1 }-->
+<!--        //     }-->
+<!--        //     // colorObj[`rgba(${data[i]}, ${data[i+1]}, ${data[i+2]}, ${data[i+3]})`] = item ? colorObj[`rgba(${data[i]}, ${data[i+1]}, ${data[i+2]}, ${data[i+3]})`] += 1 : 1-->
+<!--        //     // colorArr.push(`rgba(${data[i]}, ${data[i+1]}, ${data[i+2]}, ${data[i+3]})`)-->
+<!--        // }-->
+<!--        // const colorArr = Object.values(colorObj).sort((a, b) => b.num - a.num)-->
+<!--        // console.log(colorArr)-->
+
+<!--        const colorList = {}-->
+<!--        let i = 0;-->
+<!--        while (i < data.length) {-->
+<!--            const r = data[i];-->
+<!--            const g = data[i + 1];-->
+<!--            const b = data[i + 2];-->
+<!--            const a = data[i + 3];-->
+<!--            i = i + 4; // 最后 +4 比每次 i++ 快 10ms 左右性能-->
+<!--            const key = [r,g,b,a].join(',')-->
+<!--            key in colorList ? ++colorList[key] : (colorList[key] = 1)-->
+<!--        }-->
+<!--        console.log(colorList)-->
+
+<!--        let arr = [];-->
+<!--        for(let key in colorList){-->
+<!--            arr.push({-->
+<!--                rgba: `rgba(${key})`,-->
+<!--                num: colorList[key]-->
+<!--            })-->
+<!--        }-->
+<!--        arr = arr.sort((a,b) => b.num - a.num)-->
+<!--        console.log(arr)-->
+<!--        console.timeEnd('a')-->
+<!--    }-->
+
+<!--    img.src="https://img2.baidu.com/it/u=2354807234,2330649415&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"-->
+<!--    img.crossOrigin="anonymous"-->
+<!--</script>-->
