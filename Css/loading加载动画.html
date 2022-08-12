@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loading加载动画</title>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        div {
+            font-size: 36px;
+            display: inline-block;
+            font-family: monospace;
+        }
+
+        /* 经典loading */
+        .classical {
+            font-weight: bolder;
+            color: #232323;
+            margin: 0 8px;
+        }
+
+        .classical1 {
+            background: linear-gradient(90deg, #000 calc(50% + 0.5ch), #fff 0) right/calc(200% + 1ch) 100%;
+            /* 线性渐变  50% + 0.5ch 为蓝色， 右边为黑色 定位在右侧 宽200% 高100% */
+            -webkit-background-clip:text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: c1 2s infinite steps(11);
+            /* 设置动画为11帧 （2s内完成11帧） */
+        }
+        @keyframes c1 {
+            to{
+                background-position: left
+            }
+        }
+
+        .classical2 {
+            background: linear-gradient(90deg, blue calc(50% + 0.5ch), #000 0) right/calc(200% + 1ch) 100%;
+            /* 线性渐变  50% + 0.5ch 为蓝色， 右边为黑色 定位在右侧 宽200% 高100% */
+            -webkit-background-clip:text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: c2 2s infinite steps(11);
+            /* 设置动画为11帧 （2s内完成11帧） */
+        }
+        @keyframes c2 {
+            to{
+                background-position: left
+            }
+        }
+
+        .classical3 {
+            background: linear-gradient(90deg, #000 calc(50% - 0.5ch), red 0 calc(50% + 0.5ch), #000 0) right/calc(200% + 1ch) 100%;
+            /* 线性渐变 calc(50% - 0.5ch)为黑色，  1ch 为红色， 右边为黑色 定位在右侧 宽200% 高100% */
+            -webkit-background-clip:text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: c3 2.5s infinite steps(11);
+            /* 设置动画为11帧 （2.5s内完成11帧） */
+        }
+        @keyframes c3 {
+            to{
+                background-position: left
+            }
+        }
+
+        .dot {
+            width: 60px;
+            aspect-ratio: 4;
+        }
+
+        .dot1 {
+            background: radial-gradient(circle closest-side,#000 90%,#0000) 0/calc(100%/3) 100% space;
+            /*clip-path: inset(0 100% 0 0);*/
+            animation: d1 1s steps(4) infinite;
+        }
+        @keyframes d1 {
+            to {
+                clip-path: inset(0 -34% 0 0)
+            }
+        }
+    </style>
+</head>
+<body>
+    <h4>经典加载动画</h4>
+    <hr style="border-color: #eda6f124;">
+    <div class="classical classical1">Loading...</div>
+    <div class="classical classical2">Loading...</div>
+    <div class="classical classical3">Loading...</div>
+    <h3>圆点加载动画</h3>
+    <hr style="border-color: #eda6f124;">
+    <div class="dot dot1"></div>
+    <div class="dot dot2"></div>
+    <div class="dot dot3"></div>
+
+</body>
+</html>
