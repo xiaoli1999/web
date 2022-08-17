@@ -6,19 +6,34 @@
     <style>
         * {
             text-align: center;
+            margin: 0;
+            padding: 0;
         }
 
-        div {
-            font-size: 36px;
-            display: inline-block;
+        body {
+            overflow: hidden;
+        }
+
+        h3 {
+            margin: 12px 0;
+        }
+
+        .wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 12px 0;
             font-family: monospace;
+            font-size: 36px;
         }
 
         /* 经典loading */
         .classical {
             font-weight: bolder;
             color: #232323;
-            margin: 0 8px;
+            margin: 12px;
         }
 
         .classical1 {
@@ -66,34 +81,185 @@
             }
         }
 
-        .dot {
-            width: 60px;
-            aspect-ratio: 4;
+        .spinner {
+            width: 30px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            margin: 12px;
         }
 
-        .dot1 {
-            background: radial-gradient(circle closest-side,#000 90%,#0000) 0/calc(100%/3) 100% space;
-            /*clip-path: inset(0 100% 0 0);*/
-            animation: d1 1s steps(4) infinite;
+        .spinner1 {
+            border: 8px solid;
+            border-color: #fbc2eb transparent #fad0c4 transparent;
+            animation: sp1 1s infinite;
         }
-        @keyframes d1 {
+        @keyframes sp1 {
             to {
-                clip-path: inset(0 -34% 0 0)
+                rotate: 0.5turn;
             }
+        }
+
+        .spinner2 {
+            border: 8px solid #f7f8fa;
+            border-right-color: #fbc8d4;
+            animation: sp2 1s infinite;
+        }
+        @keyframes sp2 {
+            to {
+                rotate: 1turn;
+            }
+        }
+
+        .spinner3 {
+            padding: 6px;
+            background: #222;
+            --_m:
+                    conic-gradient(#0000 10%,#000), /* 圆锥渐变 */
+                    linear-gradient(#000, #000) content-box; /* 线性渐变 */
+            -webkit-mask: var(--_m);
+            mask: var(--_m);
+            -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+            animation: sp3 1s infinite linear;
+        }
+        @keyframes sp3 {
+            to {
+                rotate: 1turn;
+            }
+        }
+
+        .spinner4 {
+            width: 40px;
+            background:
+                    radial-gradient(farthest-side,#ffa516 94%,#0000) top/6px 6px no-repeat,
+                    conic-gradient(#0000 30%,#ffa516);
+            -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 6px), #000 0);
+            animation: sp4 1s infinite linear;
+        }
+        @keyframes sp4 {
+            to {
+                rotate: 1turn;
+            }
+        }
+
+        .spinner5 {
+            width: 40px;
+            --_c: radial-gradient(farthest-side,#cd9cf2 92%, #0000);
+            background:
+                    var(--_c) top,
+                    var(--_c) left,
+                    var(--_c) right,
+                    var(--_c) bottom;
+            background-size: 10px 10px;
+            background-repeat: no-repeat;
+            animation: sp5 1s infinite;
+        }
+        @keyframes sp5 {
+            to{
+                transform: rotate(.5turn)
+            }
+        }
+
+        .heart {
+            margin: 12px 24px 0 24px;
+        }
+
+        .heart1 {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #cd9cf2;
+            box-shadow: 0 0 0 0 #cd9cf2aa;
+            animation: he1 1s infinite;
+        }
+        @keyframes he1 {
+            100% {
+                box-shadow: 0 0 0 18px #cd9cf200;
+            }
+        }
+
+        .heart2 {
+            width: 50px;
+            height: 50px;
+            color: #dc1818;
+            background:
+                    radial-gradient(circle at 60% 65%, #cd9cf2 62%, #0000 65%) top left,
+                    radial-gradient(circle at 40% 65%, #cd9cf2 62%, #0000 65%) top right,
+                    linear-gradient(to bottom left, #cd9cf2 42%,#0000 43%) bottom left ,
+                    linear-gradient(to bottom right,#cd9cf2 42%,#0000 43%) bottom right;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .heart2:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            opacity: 0.4;
+            animation: he2 1s infinite;
+        }
+        @keyframes he2 {
+            to {
+                transform:scale(1.8);
+                opacity:0
+            }
+        }
+
+        .jelly {
+            margin: 12px;
+        }
+
+        .jelly1 {
+            width: 50px;
+            height: 50px;
+            background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+            border-radius: 50%;
+            animation: je1 3s infinite linear;
+        }
+        @keyframes je1{
+            12.5% { border-radius: 37% 63% 70% 30% / 30% 62% 38% 70% }
+            25%   { border-radius: 50% 50% 70% 30% / 52% 62% 38% 48% }
+            37.5% { border-radius: 33% 67% 18% 82% / 52% 75% 25% 48% }
+            50%   { border-radius: 73% 27% 18% 82% / 52% 32% 68% 48% }
+            62.5% { border-radius: 73% 27% 74% 26% / 64% 32% 68% 36% }
+            75%   { border-radius: 84% 16% 15% 85% / 55% 79% 21% 45% }
+            87.5% { border-radius: 12% 88% 69% 31% / 10% 66% 34% 90% }
         }
     </style>
 </head>
 <body>
-    <h4>经典加载动画</h4>
+    <h3>经典加载动画</h3>
     <hr style="border-color: #eda6f124;">
-    <div class="classical classical1">Loading...</div>
-    <div class="classical classical2">Loading...</div>
-    <div class="classical classical3">Loading...</div>
-    <h3>圆点加载动画</h3>
+    <div class="wrap">
+        <div class="classical classical1">Loading...</div>
+        <div class="classical classical2">Loading...</div>
+        <div class="classical classical3">Loading...</div>
+    </div>
+
+    <h3>旋转加载动画</h3>
     <hr style="border-color: #eda6f124;">
-    <div class="dot dot1"></div>
-    <div class="dot dot2"></div>
-    <div class="dot dot3"></div>
+    <div class="wrap">
+        <div class="spinner spinner1"></div>
+        <div class="spinner spinner2"></div>
+        <div class="spinner spinner3"></div>
+        <div class="spinner spinner4"></div>
+        <div class="spinner spinner5"></div>
+    </div>
+
+    <h3>心跳加载动画</h3>
+    <hr style="border-color: #eda6f124;">
+    <div class="wrap">
+        <div class="heart heart1"></div>
+        <div class="heart heart2"></div>
+    </div>
+
+    <h3>果冻加载动画</h3>
+    <hr style="border-color: #eda6f124;">
+    <div class="wrap">
+        <div class="jelly jelly1"></div>
+    </div>
+
 
 </body>
 </html>
