@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>骨架屏</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="app">
+        <header> 骨架屏 </header>
+        <main>
+            <div v-for="skeleton in 4" :key="skeleton" class="skeleton-warp" >
+                <div class="skeleton-title">{{ skeletonName(skeleton) }}</div>
+                <div :class="'skeleton skeleton-' + skeleton">
+                    <div v-show="!loading" class="content">
+                        <div class="top">
+                            <img class="top-logo" src="https://res.cloudinary.com/inkink/image/upload/q_auto/v1660618009/web/42a779ac8f6839abf0a86918a9b50df5.png" alt="">
+                            <div>
+                                <img class="top-panel" src="https://res.cloudinary.com/inkink/image/upload/q_auto/v1660291392/web/35de4577b7fca66d1b1dffa7cec8298d.png" alt="">
+                                <img class="top-panel" src="https://res.cloudinary.com/inkink/image/upload/q_auto/v1660291392/web/929e4f0b67123964adaf1f9c58ae7657.png" alt="">
+                            </div>
+                        </div>
+                        <img class="banner" src="https://res.cloudinary.com/inkink/image/upload/q_auto/v1652088764/jaogddzfzoq2xcnko1h0.png" alt="">
+                        <div class="class">
+                            <div v-for="item in 8" :key="item" class="class-item">
+                                <img class="class-item-img" src="https://res.cloudinary.com/inkink/image/upload/q_auto/v1660707553/0a84a27a7eebd0da21b1bf91ba5693f7.webp" alt="">
+                                <div class="class-item-name">Birthday</div>
+                            </div>
+                        </div>
+                        <div class="hot-title">Hot Sale</div>
+                        <div class="hot">
+                            <div v-for="item in 4" :key="item" class="hot-item">
+                                <img class="hot-item-img" src="https://res.cloudinary.com/inkink/image/upload/q_auto/v1660787165/2c9247f8b262afe2fa31fb25301a3bd8.png" alt="">
+                                <p>New MARRIED SINCE & Celebrating Our</p>
+                                <div>US$ 43.98</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-show="loading" class="content loading">
+                        <div class="top">
+                            <div class="top-logo"></div>
+                            <div>
+                                <div class="top-panel"></div>
+                                <div class="top-panel"></div>
+                            </div>
+                        </div>
+                        <div class="banner"></div>
+                        <div class="class">
+                            <div v-for="item in 8" :key="item" class="class-item">
+                                <div class="class-item-img"></div>
+                                <div class="class-item-name"></div>
+                            </div>
+                        </div>
+                        <div class="hot-title"></div>
+                        <div class="hot">
+                            <div v-for="item in 4" :key="item" class="hot-item">
+                                <div class="hot-item-img"></div>
+                                <p></p>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+
+<script>
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                message: 'Hello Vue!',
+                loading: false
+            }
+        },
+        created () {
+            this.loading = true
+        },
+        computed: {
+            skeletonName () {
+                return (name) => {
+                    console.log(name)
+                    if (name === 1) return '扫光骨架屏'
+                    if (name === 2) return '呼吸灯骨架屏'
+                    if (name === 3) return '加载骨架屏'
+                    if (name === 4) return '其他骨架屏'
+                    return '骨架屏'
+                }
+            }
+        },
+        mounted () {
+            setTimeout(() => (this.loading  = false), Math.floor(Math.random() * 6000))
+        }
+    }).mount('#app')
+</script>

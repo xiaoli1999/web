@@ -1,0 +1,384 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body,
+html {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f7f8fa;
+  letter-spacing: 1px;
+}
+header {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  padding: 24px 0 ;
+}
+img {
+  display: block;
+}
+.loading-1::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(104deg, transparent 44%, #ffffff56 50%, transparent 54%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  animation: loading-1 1.2s linear infinite;
+}
+@keyframes loading-1 {
+  to {
+    background-position-x: -100%;
+  }
+}
+.loading-2 {
+  animation: loading-2 2s ease-in-out infinite;
+}
+@keyframes loading-2 {
+  0% {
+    opacity: 0.6;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+.loading-3 {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+@keyframes loading-3 {
+  to {
+    background-position-x: 0%;
+  }
+}
+main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+main .skeleton-warp {
+  flex-shrink: 0;
+}
+main .skeleton-warp .skeleton-title {
+  line-height: 60px;
+  font-size: 16px;
+  color: #1a1a1a;
+  text-align: center;
+}
+main .skeleton-warp .skeleton {
+  position: relative;
+  width: 375px;
+  height: 760px;
+  background: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+main .skeleton-warp .skeleton::-webkit-scrollbar {
+  width: 0;
+}
+main .skeleton-warp .skeleton .content .top {
+  height: 46px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main .skeleton-warp .skeleton .content .top .top-logo {
+  width: auto;
+  height: 42px;
+  object-fit: contain;
+}
+main .skeleton-warp .skeleton .content .top > div {
+  display: flex;
+  justify-content: flex-end;
+}
+main .skeleton-warp .skeleton .content .top > div .top-panel {
+  width: 20px;
+  height: auto;
+  object-fit: contain;
+  margin-left: 12px;
+}
+main .skeleton-warp .skeleton .content .banner {
+  width: calc(100% - 32px);
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 8px auto;
+}
+main .skeleton-warp .skeleton .content .class {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main .skeleton-warp .skeleton .content .class .class-item {
+  width: 25%;
+  margin-top: 12px;
+  flex-shrink: 0;
+}
+main .skeleton-warp .skeleton .content .class .class-item .class-item-img {
+  width: 68px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 6px;
+}
+main .skeleton-warp .skeleton .content .class .class-item .class-item-name {
+  min-height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: 0;
+}
+main .skeleton-warp .skeleton .content .hot-title {
+  line-height: 64px;
+  font-size: 26px;
+  color: #000;
+  text-align: center;
+  font-weight: 600;
+}
+main .skeleton-warp .skeleton .content .hot {
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  letter-spacing: 0;
+}
+main .skeleton-warp .skeleton .content .hot .hot-item {
+  width: calc(50% - 4px);
+  flex-shrink: 0;
+}
+main .skeleton-warp .skeleton .content .hot .hot-item .hot-item-img {
+  width: 100%;
+  aspect-ratio: 1.25;
+  object-fit: cover;
+  border-radius: 8px;
+  overflow: hidden;
+}
+main .skeleton-warp .skeleton .content .hot .hot-item > p {
+  padding: 8px 4px 0;
+  font-size: 12px;
+  color: #232323;
+}
+main .skeleton-warp .skeleton .content .hot .hot-item > div {
+  padding: 8px 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+main .skeleton-warp .skeleton .loading .top .top-logo {
+  width: 102px;
+  height: 32px;
+  background: var(--bg-color);
+  border-radius: 4px;
+}
+main .skeleton-warp .skeleton .loading .top > div .top-panel {
+  width: 20px;
+  aspect-ratio: 1;
+  background: var(--bg-color);
+  border-radius: 2px;
+}
+main .skeleton-warp .skeleton .loading .banner {
+  width: calc(100% - 32px);
+  aspect-ratio: 16/9;
+  margin: 8px auto;
+  background: var(--bg-color);
+}
+main .skeleton-warp .skeleton .loading .class .class-item .class-item-img {
+  background: var(--bg-color);
+}
+main .skeleton-warp .skeleton .loading .class .class-item .class-item-name {
+  background: var(--bg-color);
+  border-radius: 2px;
+  margin-inline: 8px;
+}
+main .skeleton-warp .skeleton .loading .hot-title {
+  width: 120px;
+  height: 32px;
+  margin: 16px auto;
+  background: var(--bg-color);
+  border-radius: 4px;
+}
+main .skeleton-warp .skeleton .loading .hot .hot-item .hot-item-img {
+  background: var(--bg-color);
+  height: auto;
+}
+main .skeleton-warp .skeleton .loading .hot .hot-item > p {
+  padding: 0;
+  margin: 8px 4px 0;
+  height: 18px;
+  background: var(--bg-color);
+  border-radius: 2px;
+  margin-inline: auto;
+}
+main .skeleton-warp .skeleton .loading .hot .hot-item > div {
+  padding: 0;
+  margin: 8px 4px;
+  height: 24px;
+  background: var(--bg-color);
+  border-radius: 2px;
+  margin-inline: auto;
+}
+main .skeleton-warp .skeleton-1 {
+  --bg-color: #ededed;
+}
+main .skeleton-warp .skeleton-1 .loading::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(104deg, transparent 44%, #ffffff56 50%, transparent 54%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  animation: loading-1 1.2s linear infinite;
+}
+main .skeleton-warp .skeleton-1 .loading .top {
+  position: relative;
+}
+main .skeleton-warp .skeleton-1 .loading .top::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(104deg, transparent 44%, #ffffff56 50%, transparent 54%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  animation: loading-1 1.2s linear infinite;
+}
+main .skeleton-warp .skeleton-1 .loading .banner {
+  position: relative;
+}
+main .skeleton-warp .skeleton-1 .loading .banner::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(104deg, transparent 44%, #ffffff56 50%, transparent 54%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  animation: loading-1 1.2s linear infinite;
+}
+main .skeleton-warp .skeleton-1 .loading .class {
+  position: relative;
+}
+main .skeleton-warp .skeleton-1 .loading .class::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(104deg, transparent 44%, #ffffff56 50%, transparent 54%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  animation: loading-1 1.2s linear infinite;
+}
+main .skeleton-warp .skeleton-1 .loading .hot-title {
+  position: relative;
+}
+main .skeleton-warp .skeleton-1 .loading .hot-title::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(104deg, transparent 44%, #ffffff56 50%, transparent 54%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  animation: loading-1 1.2s linear infinite;
+}
+main .skeleton-warp .skeleton-1 .loading .hot {
+  position: relative;
+}
+main .skeleton-warp .skeleton-1 .loading .hot::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(104deg, transparent 44%, #ffffff56 50%, transparent 54%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  animation: loading-1 1.2s linear infinite;
+}
+main .skeleton-warp .skeleton-2 {
+  --bg-color: #9e9e9e;
+}
+main .skeleton-warp .skeleton-2 .loading {
+  animation: loading-2 2s ease-in-out infinite;
+}
+main .skeleton-warp .skeleton-3 {
+  --bg-color: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+  background-size: 400% 100%;
+}
+main .skeleton-warp .skeleton-3 .loading .top .top-logo {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-3 .loading .top > div .top-panel {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-3 .loading .banner {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-3 .loading .class .class-item .class-item-img {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-3 .loading .class .class-item .class-item-name {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-3 .loading .hot-title {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-3 .loading .hot .hot-item .hot-item-img {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-3 .loading .hot .hot-item > p,
+main .skeleton-warp .skeleton-3 .loading .hot .hot-item div {
+  animation: loading-3 4s linear infinite;
+  background-size: 400% 100%;
+  background-position-x: 400%;
+}
+main .skeleton-warp .skeleton-4 {
+  --bg-color: #ededed;
+}
+/*# sourceMappingURL=index.css.map */
