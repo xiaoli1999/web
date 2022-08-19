@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拟态按钮滑动效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #e2e6eb;
+
+            /*透视，旋转会用到*/
+            perspective: 1000px;
+        }
+
+        header {
+            line-height: 64px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20vh;
+        }
+
+        main > .content {
+            position: relative;
+            width: 300px;
+            height: 60px;
+            border-radius: 8px;
+            background: #e2e6eb;
+            box-shadow:  6px 6px 9px #d9dce6, -6px -6px 10px #f5f9fd;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            transition: transform .4s cubic-bezier(0, 0, 0.48, 1);
+
+            /*旋转中心*/
+            transform-origin: var(--content-origin);
+        }
+
+        main > .content::after {
+            display: block;
+            content: '';
+            position: absolute;
+            width: 130px;
+            height: 36px;
+            border-radius: 8px;
+            box-shadow: inset 5px 4px 4px #d9dce6,
+            inset -3px -4px 13px #f5f9fd,
+            inset 4px 4px 4px #d9dce6;
+            inset: 0;
+            top: 11px;
+            left: var(--content-left);
+            transition: left 1s cubic-bezier(0.82, 0.12, 0.18, 0.88);
+
+            /*box-shadow: inset 8px 8px 6px #d9dce6,*/
+            /*            inset -5px -5px 15px #f5f9fd,*/
+            /*            inset -5px -5px 15px #f5f9fd,*/
+            /*            inset 7px 7px 6px #d9dce6;*/
+        }
+
+        main > .content > div {
+            width: 130px;
+            height: 36px;
+            text-align: center;
+            line-height: 36px;
+            font-size: 14px;
+            color: #999;
+            cursor: pointer;
+            transition: color .6s linear;
+            animation: btn .5s linear;
+        }
+
+        main > .content > .active {
+            color: #111;
+            animation: btn-active .5s linear;
+        }
+
+        main > .rotate-y {
+            transform: rotateY(var(--content-rotate));
+        }
+
+
+        @keyframes btn {
+            0% {
+                transform: scale(1.1);
+            }
+
+            60% {
+                transform: scale(.95);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes btn-active {
+            0% {
+                transform: scale(1);
+            }
+
+            60% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>拟态按钮效果</header>
+    <main>
+        <div id="content" class="content">
+            <div class="content-btn">Recent</div>
+            <div class="content-btn">Archived</div>
+        </div>
+    </main>
+</body>
+</html>
+
+<script>
+    const content = document.getElementById('content')
+    content.style.setProperty('--content-left', '12px')
+
+    // 按钮移动
+    const btnList = document.getElementsByClassName('content-btn')
+
+    btnList[0].classList.add('active')
+
+    for (let i = 0; i < btnList.length; i++) {
+        btnList[i].addEventListener('click', () => {
+            // 滑块移动
+            content.style.setProperty('--content-left', `calc(12px + ${i * 50}%)`)
+
+            // btn选中
+            setBtnClassName(i)
+
+            // 原点
+            content.style.setProperty('--content-origin', i ? '20% top' : '80% top')
+
+            // 旋转
+            content.style.setProperty('--content-rotate', `${ i ? -16 : 16 }deg`)
+
+            content.classList.add('rotate-y')
+            setTimeout(() => content.classList.remove('rotate-y'), 500)
+
+        })
+    }
+
+    const setBtnClassName = (index) => {
+        for (let i = 0; i < btnList.length; i++) {
+            index === i ? btnList[i].classList.add('active') :  btnList[i].classList.remove('active')
+        }
+    }
+</script>
