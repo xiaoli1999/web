@@ -17,6 +17,18 @@
 #### React(常用组件、新特性、其他等)
 
 
+### 解決拉取、推送失败等
+```javascript
+git config --global http.sslVerify "false"
+
+git config --global https.proxy
+
+git config --global --unset https.proxy
+
+// 终极解决方案
+// 在 C:\Windows\System32\drivers\etc 的hosts 加入 140.82.112.4 github.com
+```
+
 
 #### 暂时分为此几类，后续其他模块等后补
 
