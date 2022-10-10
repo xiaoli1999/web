@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下载图片并复制到剪贴板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #down {
+            width: 460px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<img id="down" src="https://res.cloudinary.com/inkink/image/upload/v1663299618/60c90a29c917b547bba27278d034c05c.png" alt="" title="点击下载" />
+
+</body>
+</html>
+<script>
+	const downloadImg = (url, name) => {
+		if (!url) return (console.log('图片链接无效'));
+
+		try {
+			name = name || new Date().getTime() + '.png';
+
+			const image = new Image();
+			image.crossOrigin = 'Anonymous';
+			image.setAttribute('crossOrigin', 'anonymous');
+
+			image.onload = async () => {
+				const canvas = document.createElement('canvas');
+				canvas.width = image.width;
+				canvas.height = image.height;
+
+				const context = canvas.getContext('2d');
+				context.drawImage(image, 0, 0, image.width, image.height);
+
+				// 下载图片
+				const url = canvas.toDataURL('image/png');
+				const a = document.createElement('a');
+				const event = new MouseEvent("click", { bubbles: true, cancelable: true, view: window });
+				a.download = name;
+				a.href = url;
+				a.dispatchEvent(event);
+				a.remove();
+
+				// 复制图片
+				await canvas.toBlob(async (blob) => {
+					// eslint-disable-next-line no-undef
+					const data = [new ClipboardItem({[blob.type]: blob})];
+					await navigator.clipboard.write(data).catch((err) => (console.log('复制失败', err)));
+					console.log('复制成功');
+				});
+
+				canvas.remove();
+			};
+
+			image.src = url;
+		} catch (err) {
+			console.log('未知错误', err);
+		}
+	};
+
+	const img = document.getElementById('down')
+
+    img.onclick = (e) => downloadImg(e.target.src, '喵喵喵')
+</script>
