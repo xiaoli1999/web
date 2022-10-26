@@ -61,6 +61,7 @@
 				// 复制图片
 				await canvas.toBlob(async (blob) => {
 					// eslint-disable-next-line no-undef
+					// ClipboardItem 必须在 https 或者 localhost 可用
 					const data = [new ClipboardItem({[blob.type]: blob})];
 					await navigator.clipboard.write(data).catch((err) => (console.log('复制失败', err)));
 					console.log('复制成功');
